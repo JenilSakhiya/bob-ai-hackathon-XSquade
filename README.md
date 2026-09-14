@@ -10,8 +10,7 @@
 |---|---|
 | **Team Name** | CyberSentinel AI |
 | **Track** | AI / Cybersecurity |
-| **Team Lead** | Secur
-ity Engineer — [lead@example.com] |
+| **Team Lead** | Security Engineer — [lead@example.com] |
 | **Members** | Full-Stack AI Engineer, Cybersecurity Analyst, UI/UX Designer |
 
 ---
@@ -60,44 +59,38 @@ We built **CyberSentinel**, an end-to-end AI SOC Analyst that continuously inges
 ## 📁 Repository Structure
 
 ```
-cybersentinel/
-├── backend/
-│   ├── app/
-│   │   ├── main.py               # FastAPI entry point, lifespan startup & CORS
-│   │   ├── config.py             # Settings, thresholds & environment config
-│   │   ├── database.py           # SQLAlchemy engine & SQLite session provider
-│   │   ├── models/               # Database ORM models (Events, Incidents, Actions, Chat)
-│   │   ├── schemas/              # Pydantic v2 schemas for strict API validation
-│   │   ├── api/                  # REST endpoints (Dashboard, Incidents, Events, Chat, Sim)
-│   │   ├── services/             # Detection, Correlation, Risk, Investigation, Simulation
-│   │   ├── ai/                   # AI Provider abstraction, Mock provider & LLM adapter
-│   │   └── seed/                 # Realistic telemetry seed generator (170+ events, 9 incidents)
-│   ├── tests/                    # Automated Pytest suite (16 tests, 100% passing)
-│   ├── Dockerfile                # Backend containerization
-│   └── requirements.txt          # Python dependencies
-├── frontend/
-│   ├── src/
-│   │   ├── components/           # Navbar, SeverityBadge, RiskScoreMeter, Timeline, ChatDrawer
-│   │   ├── pages/                # DashboardPage, IncidentsPage, IncidentDetailPage, Events, Simulator
-│   │   ├── services/api.ts       # Centralized REST API client
-│   │   ├── types/index.ts        # Shared TypeScript data models
-│   │   ├── App.tsx               # Primary router & SOC layout container
-│   │   └── index.css             # Cyber command-center dark theme & animations
-│   ├── Dockerfile                # Multi-stage production frontend container
-│   ├── package.json              # Node dependencies
-│   └── vite.config.ts            # Vite bundler configuration with backend proxy
-├── docs/                         # Written documentation
-│   ├── problem-statement.md
-│   ├── solution-overview.md
-│   ├── architecture.md
-│   └── setup-guide.md
-├── demo/                         # Demo artifacts
-│   ├── screenshots/              # Application screenshots
-│   └── demo-video-link.txt       # Video walkthrough link
-├── presentation/                 # Slide deck & pitch assets
-├── docker-compose.yml            # Multi-container orchestration
-├── .env.example                  # Environment configuration template
-└── README.md
+bob-ai-hackathon-XSquade/
+├── public/                       # Static public assets
+├── src/                          # Application source code
+│   ├── backend/                  # Python FastAPI Backend
+│   │   ├── app/
+│   │   │   ├── main.py           # FastAPI entry point, lifespan startup & CORS
+│   │   │   ├── config.py         # Settings, thresholds & environment config
+│   │   │   ├── database.py       # SQLAlchemy engine & SQLite session provider
+│   │   │   ├── models/           # Database ORM models (Events, Incidents, Actions, Chat)
+│   │   │   ├── schemas/          # Pydantic v2 schemas for strict API validation
+│   │   │   ├── api/              # REST endpoints (Dashboard, Incidents, Events, Chat, Sim)
+│   │   │   ├── services/         # Detection, Correlation, Risk, Investigation, Simulation
+│   │   │   ├── ai/               # AI Provider abstraction, Mock provider & LLM adapter
+│   │   │   └── seed/             # Realistic telemetry seed generator (170+ events, 9 incidents)
+│   │   ├── tests/                # Automated Pytest suite (16 tests, 100% passing)
+│   │   ├── Dockerfile            # Backend containerization
+│   │   ├── requirements.txt      # Python dependencies
+│   │   └── verify_demo.py        # Demo verification script
+│   ├── components/               # Navbar, SeverityBadge, RiskScoreMeter, Timeline, ChatDrawer
+│   ├── pages/                    # DashboardPage, IncidentsPage, IncidentDetailPage, Events, Simulator
+│   ├── services/api.ts           # Centralized REST API client
+│   ├── types/index.ts            # Shared TypeScript data models
+│   ├── App.tsx                   # Primary router & SOC layout container
+│   ├── App.css                   # Component styles
+│   ├── index.css                 # Cyber command-center dark theme & animations
+│   └── main.tsx                  # React DOM entry point
+├── Dockerfile                    # Frontend containerization
+├── index.html                    # Single-page application root HTML
+├── package.json                  # Node dependencies & npm scripts
+├── tsconfig.json                 # TypeScript compiler configuration
+├── vite.config.ts                # Vite bundler configuration with backend proxy
+└── README.md                     # Project overview & documentation
 ```
 
 ---
@@ -112,14 +105,14 @@ cybersentinel/
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/example/cybersentinel.git
-cd cybersentinel
+git clone https://github.com/JenilSakhiya/bob-ai-hackathon-XSquade.git
+cd bob-ai-hackathon-XSquade
 ```
 
 ### 2. Backend Setup & Startup
 ```powershell
 # Windows PowerShell
-cd backend
+cd src/backend
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
@@ -130,7 +123,7 @@ uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
 
 ```bash
 # Linux / macOS
-cd backend
+cd src/backend
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
@@ -139,7 +132,7 @@ uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
 
 ### 3. Frontend Setup & Startup (In a Separate Terminal)
 ```bash
-cd frontend
+# Run from repository root
 npm install
 npm run dev
 ```
