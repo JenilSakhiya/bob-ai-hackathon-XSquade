@@ -11,28 +11,67 @@ import {
   IncidentStatus,
 } from '../types';
 
-// In production (Vercel/Netlify), set VITE_API_URL to your Render backend URL
-// e.g. VITE_API_URL=https://cybersentinel.onrender.com
-// In local dev, leave unset — Vite proxy handles /api → localhost:8000
-const API_BASE = (import.meta.env.VITE_API_URL ?? '') + '/api';
+// Support VITE_API_URL, VITE_URL, or VITE_BACKEND_URL, stripping trailing slashes or duplicate /api
+const rawBaseUrl = (
+  import.meta.env.VITE_API_URL ||
+  import.meta.env.VITE_URL ||
+  import.meta.env.VITE_BACKEND_URL ||
+  ''
+).trim();
 
-async function handleResponse<T>(res: Response): Promise<T> {
+const sanitizedBase = rawBaseUrl
+  ? rawBaseUrl.replace(/\/api\/?$/, '').replace(/\/+$/, '')
+  : '';
+
+export const API_BASE = sanitizedBase ? `${sanitizedBase}/api` : '/api';
+
+async function handleResponse<T>(res: Response, endpointUrl?: string): Promise<T> {
+  const contentType = res.headers.get('content-type') || '';
+
   if (!res.ok) {
-    let errorDetail = `Request failed with status ${res.status}`;
+    let errorDetail = `Backend HTTP ${res.status}`;
     try {
-      const err = await res.json();
-      if (err.detail) errorDetail = err.detail;
+      if (contentType.includes('application/json')) {
+        const err = await res.json();
+        if (err.detail) errorDetail = err.detail;
+      } else {
+        const text = await res.text();
+        if (text.toLowerCase().includes('<!doctype') || text.toLowerCase().includes('<html')) {
+          errorDetail = `Backend returned HTML error (${res.status}). Service may be spinning up on Render. URL: ${endpointUrl || 'unknown'}`;
+        } else if (text) {
+          errorDetail = text.slice(0, 150);
+        }
+      }
     } catch (_) {}
     throw new Error(errorDetail);
   }
-  return res.json();
+
+  // Handle case where HTTP status is 200 OK, but HTML was returned (e.g. Vercel SPA fallback to index.html)
+  if (contentType.includes('text/html')) {
+    const isVercelFallback = typeof window !== 'undefined' && (!sanitizedBase || endpointUrl?.includes(window.location.hostname));
+    if (isVercelFallback) {
+      throw new Error(
+        `Vercel returned index.html instead of backend JSON for '${endpointUrl}'. VITE_API_URL was not embedded at build time. In Vercel, set VITE_API_URL to your Render URL and trigger a REDEPLOY.`
+      );
+    }
+    throw new Error(
+      `Backend returned HTML instead of JSON for '${endpointUrl}'. Check your Render service logs or cold start status.`
+    );
+  }
+
+  try {
+    return await res.json();
+  } catch (err: any) {
+    throw new Error(`Invalid JSON received from ${endpointUrl || 'backend'}: ${err.message}`);
+  }
 }
 
 export const api = {
   // Dashboard
   async getDashboard(): Promise<DashboardData> {
-    const res = await fetch(`${API_BASE}/dashboard`);
-    return handleResponse<DashboardData>(res);
+    const url = `${API_BASE}/dashboard`;
+    const res = await fetch(url);
+    return handleResponse<DashboardData>(res, url);
   },
 
   // Events
