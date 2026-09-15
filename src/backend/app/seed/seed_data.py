@@ -2,6 +2,7 @@ from datetime import datetime, timedelta
 import random
 import json
 from sqlalchemy.orm import Session
+from app.database import Base
 from app.models.event import SecurityEvent
 from app.models.incident import Incident, IncidentEvent
 from app.models.response_action import ResponseAction
@@ -37,6 +38,8 @@ def seed_database(db: Session, force: bool = False):
     """
     Seeds the database with realistic baseline events and historical incidents.
     """
+    Base.metadata.create_all(bind=db.get_bind())
+
     existing_events_count = db.query(SecurityEvent).count()
     if existing_events_count > 0 and not force:
         return
