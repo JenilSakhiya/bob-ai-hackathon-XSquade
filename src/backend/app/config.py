@@ -10,11 +10,21 @@ class Settings(BaseSettings):
     CORS_ORIGINS: str = "http://localhost:5173,http://127.0.0.1:5173,http://localhost:3000"
     DATABASE_URL: str = "sqlite:///./cybersentinel.db"
     
-    # AI Provider: 'mock' (default offline) or 'openai'
+    # AI Provider: 'mock' (default offline), 'openai', 'gemini', or 'groq'
     AI_PROVIDER: str = "mock"
+
+    # OpenAI settings (used when AI_PROVIDER=openai)
     OPENAI_API_KEY: str = ""
     OPENAI_BASE_URL: str = "https://api.openai.com/v1"
     OPENAI_MODEL: str = "gpt-4o-mini"
+
+    # Google Gemini settings (used when AI_PROVIDER=gemini)
+    GEMINI_API_KEY: str = ""
+    GEMINI_MODEL: str = "gemini-1.5-flash"
+
+    # Groq settings (used when AI_PROVIDER=groq)
+    GROQ_API_KEY: str = ""
+    GROQ_MODEL: str = "llama-3.3-70b-versatile"
 
     # Threat Detection Thresholds
     BRUTE_FORCE_THRESHOLD: int = 5

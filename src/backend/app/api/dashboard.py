@@ -31,12 +31,16 @@ def get_dashboard_metrics(db: Session = Depends(get_db)):
     events_today = db.query(SecurityEvent).filter(SecurityEvent.timestamp >= day_ago).count()
     open_investigations = db.query(Incident).filter(Incident.status.in_(["OPEN", "INVESTIGATING"])).count()
 
-    # 2. System Status
+    ai_provider_map = {
+        "openai": f"OpenAI ({settings.OPENAI_MODEL})",
+        "gemini": f"Google Gemini ({settings.GEMINI_MODEL})",
+        "groq": f"Groq ({settings.GROQ_MODEL})",
+    }
     system_status = SystemStatus(
         system_status="OPERATIONAL",
         ai_status="READY",
         threat_level="CRITICAL" if critical_count > 0 else "ELEVATED",
-        ai_provider="OpenAI / Compatible LLM" if settings.AI_PROVIDER == "openai" else "Mock AI (Zero-Config Offline)"
+        ai_provider=ai_provider_map.get(settings.AI_PROVIDER.lower(), "Mock AI (Zero-Config Offline)")
     )
 
     # 3. Events Over Time (hourly buckets for the last 12 hours)
