@@ -2,13 +2,6 @@
   "buildCommand": "cd src/frontend && npm install && npm run build",
   "outputDirectory": "src/frontend/dist",
   "rewrites": [
-    {
-      "source": "/api/:path*",
-      "destination": "https://cybersentinel-bqxe.onrender.com/api/:path*"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
