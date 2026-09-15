@@ -1,12 +1,13 @@
 from fastapi.testclient import TestClient
 from app.main import app
-from app.database import SessionLocal
+from app.database import Base, SessionLocal, engine
 from app.seed.seed_data import seed_database
 
 client = TestClient(app)
 
 
 def setup_module():
+    Base.metadata.create_all(bind=engine)
     db = SessionLocal()
     seed_database(db, force=True)
     db.close()
