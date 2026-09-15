@@ -14,7 +14,7 @@ logger = logging.getLogger(__name__)
 class GeminiProvider(AIProvider):
     """
     Google Gemini AI provider using the Generative Language REST API.
-    Supports Gemini 1.5 Flash, Gemini 1.5 Pro, Gemini 2.0, etc.
+    Supports current Gemini Flash and Pro models exposed by the Generative Language API.
     Automatically falls back to MockAIProvider on failure.
     """
 

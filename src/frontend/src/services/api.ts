@@ -14,7 +14,8 @@ import {
 // In production (Vercel/Netlify), set VITE_API_URL to your Render backend URL
 // e.g. VITE_API_URL=https://cybersentinel.onrender.com
 // In local dev, leave unset — Vite proxy handles /api → localhost:8000
-const API_BASE = (import.meta.env.VITE_API_URL ?? '') + '/api';
+const baseUrl = (import.meta.env.VITE_API_URL ?? '').replace(/\/+$/, '');
+const API_BASE = `${baseUrl}/api`;
 
 async function handleResponse<T>(res: Response): Promise<T> {
   if (!res.ok) {

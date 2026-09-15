@@ -20,7 +20,7 @@ class Settings(BaseSettings):
 
     # Google Gemini settings (used when AI_PROVIDER=gemini)
     GEMINI_API_KEY: str = ""
-    GEMINI_MODEL: str = "gemini-1.5-flash"
+    GEMINI_MODEL: str = "gemini-3.6-flash"
 
     # Groq settings (used when AI_PROVIDER=groq)
     GROQ_API_KEY: str = ""
