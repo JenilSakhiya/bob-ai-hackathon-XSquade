@@ -8,10 +8,10 @@
 
 | Field | Value |
 |---|---|
-| **Team Name** | CyberSentinel AI |
+| **Team Name** | XSquade|
 | **Track** | AI / Cybersecurity |
-| **Team Lead** | Security Engineer — [lead@example.com] |
-| **Members** | Full-Stack AI Engineer, Cybersecurity Analyst, UI/UX Designer |
+| **Team Lead** | Jenil Sakhiya — [25ce104@charusat.edu.in] |
+| **Members** | Dakshkumar Kachhadiya, Yug Kansagara, Dhruv Bakhlakiya |
 
 ---
 
