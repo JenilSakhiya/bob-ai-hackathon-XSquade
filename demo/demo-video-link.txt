@@ -1,5 +1,5 @@
-Demo Video Walkthrough Link:
-https://youtu.be/example-cybersentinel-demo
+Live Demo (frontend):
+https://cybersentinel-mocha.vercel.app/
 
-Live Local Demo:
-http://localhost:5173
+Live Demo (backend):
+https://cybersentinel-bqxe.onrender.com/
