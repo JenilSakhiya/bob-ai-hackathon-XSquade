@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CyberSentinelSharedSchemas",
+  "description": "Shared JSON schemas for CyberSentinel telemetry data contracts",
+  "definitions": {
+    "Severity": {
+      "type": "string",
+      "enum": ["LOW", "MEDIUM", "HIGH", "CRITICAL"]
+    },
+    "IncidentStatus": {
+      "type": "string",
+      "enum": ["OPEN", "INVESTIGATING", "CONTAINED", "RESOLVED"]
+    },
+    "ActionStatus": {
+      "type": "string",
+      "enum": ["RECOMMENDED", "APPROVED", "COMPLETED"]
+    },
+    "SecurityEvent": {
+      "type": "object",
+      "required": ["timestamp", "event_type", "username", "source_ip", "severity", "description"],
+      "properties": {
+        "id": { "type": "integer" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "event_type": { "type": "string" },
+        "username": { "type": "string" },
+        "source_ip": { "type": "string" },
+        "destination_ip": { "type": ["string", "null"] },
+        "device_id": { "type": ["string", "null"] },
+        "hostname": { "type": ["string", "null"] },
+        "location": { "type": ["string", "null"] },
+        "severity": { "$ref": "#/definitions/Severity" },
+        "description": { "type": "string" },
+        "metadata": { "type": "object" },
+        "created_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "Incident": {
+      "type": "object",
+      "required": ["id", "title", "description", "severity", "risk_score", "status", "attack_type", "affected_user", "affected_asset"],
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "severity": { "$ref": "#/definitions/Severity" },
+        "risk_score": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "status": { "$ref": "#/definitions/IncidentStatus" },
+        "attack_type": { "type": "string" },
+        "affected_user": { "type": "string" },
+        "affected_asset": { "type": "string" },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+        "first_seen": { "type": "string", "format": "date-time" },
+        "last_seen": { "type": "string", "format": "date-time" },
+        "event_count": { "type": "integer" }
+      }
+    }
+  }
+}

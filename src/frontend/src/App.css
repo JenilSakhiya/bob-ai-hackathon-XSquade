@@ -1,0 +1,21 @@
+/* Enterprise SOC Application Utility Styles */
+
+.soc-gradient-hero {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(15, 22, 35, 0.98) 50%, rgba(9, 13, 22, 1) 100%);
+}
+
+.soc-gradient-critical {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.12) 0%, rgba(15, 22, 35, 0.95) 100%);
+}
+
+.soc-gradient-warning {
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.12) 0%, rgba(15, 22, 35, 0.95) 100%);
+}
+
+.soc-gradient-info {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.12) 0%, rgba(15, 22, 35, 0.95) 100%);
+}
+
+.soc-gradient-purple {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.12) 0%, rgba(15, 22, 35, 0.95) 100%);
+}

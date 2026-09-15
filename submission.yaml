@@ -1,0 +1,53 @@
+# Hackathon Project Submission Metadata
+project_name: "CyberSentinel"
+tagline: "AI-Powered SOC Analyst — Autonomous Threat Detection, Correlation & Incident Response"
+team_name: "CyberSentinel AI"
+track: "AI / Cybersecurity"
+
+description: >
+  Autonomous Security Operations Center assistant that detects, correlates, investigates,
+  scores risk, and recommends prescriptive response actions for enterprise security incidents.
+
+team_members:
+  - name: "Security Engineer"
+    role: "Team Lead & Full-Stack AI Engineer"
+    email: "lead@example.com"
+  - name: "Cybersecurity Analyst"
+    role: "Threat Detection & MITRE Mapping"
+    email: "analyst@example.com"
+  - name: "UI/UX Designer"
+    role: "Frontend Command Center Design"
+    email: "designer@example.com"
+
+demo:
+  video_url: "https://youtu.be/example-cybersentinel-demo"
+  local_url: "http://localhost:5173"
+  api_docs: "http://localhost:8000/docs"
+
+tech_stack:
+  backend:
+    framework: "FastAPI"
+    language: "Python 3.10+"
+    orm: "SQLAlchemy 2.0"
+    validation: "Pydantic v2"
+    database: "SQLite"
+  frontend:
+    framework: "React 19"
+    tooling: "Vite"
+    language: "TypeScript"
+    styling: "Tailwind CSS"
+    charts: "Recharts"
+    icons: "Lucide React"
+  ai_provider:
+    architecture: "Pluggable AIProvider Layer"
+    offline_provider: "MockAIProvider (Zero-Key, Deterministic)"
+    online_provider: "OpenAICompatibleProvider (Ollama, vLLM, Groq, OpenAI)"
+
+repository_structure:
+  src:
+    backend: "src/backend"
+    frontend: "src/frontend"
+    shared: "src/shared"
+  docs: "docs"
+  demo: "demo"
+  presentation: "presentation"

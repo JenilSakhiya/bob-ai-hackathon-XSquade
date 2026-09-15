@@ -1,0 +1,143 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-canvas: #04070d;
+    --bg-surface: #090e18;
+    --bg-surface-elevated: #0e1626;
+    --bg-surface-hover: #141f36;
+    --border-tech: rgba(0, 229, 255, 0.15);
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --border-medium: rgba(255, 255, 255, 0.14);
+    
+    /* Cyber Tactical Palette */
+    --neon-green: #00ff88;
+    --neon-cyan: #00e5ff;
+    --neon-red: #ff3344;
+    --neon-amber: #ffaa00;
+    --neon-purple: #a855f7;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #04070d;
+    color: #e2e8f0;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  #root {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* High-Tech Hacker Scrollbars */
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #04070d;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #152238;
+    border-radius: 2px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #00e5ff55;
+  }
+}
+
+/* Tactical Cyber Grid Background */
+.cyber-matrix-bg {
+  background-color: #04070d;
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 229, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 229, 255, 0.03) 1px, transparent 1px);
+}
+
+/* Tactical Hacker Panels with Corner Highlights */
+.hacker-panel {
+  background: #090e18;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.6);
+  position: relative;
+}
+
+.hacker-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid #00e5ff;
+  border-left: 2px solid #00e5ff;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.hacker-panel::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 8px;
+  height: 8px;
+  border-bottom: 2px solid #00e5ff;
+  border-right: 2px solid #00e5ff;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.hacker-panel-critical {
+  background: linear-gradient(135deg, rgba(255, 51, 68, 0.08) 0%, #090e18 100%);
+  border: 1px solid rgba(255, 51, 68, 0.3);
+  position: relative;
+}
+
+.hacker-panel-critical::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid #ff3344;
+  border-left: 2px solid #ff3344;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.hacker-panel-critical::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 8px;
+  height: 8px;
+  border-bottom: 2px solid #ff3344;
+  border-right: 2px solid #ff3344;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+/* Subtle glow utility classes */
+.glow-cyan {
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
+}
+
+.glow-red {
+  box-shadow: 0 0 15px rgba(255, 51, 68, 0.25);
+}
+
+.glow-green {
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
+}
