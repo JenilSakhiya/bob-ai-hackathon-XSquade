@@ -9,20 +9,20 @@ description: >
   scores risk, and recommends prescriptive response actions for enterprise security incidents.
 
 team_members:
-  - name: "Security Engineer"
-    role: "Team Lead & Full-Stack AI Engineer"
-    email: "lead@example.com"
-  - name: "Cybersecurity Analyst"
-    role: "Threat Detection & MITRE Mapping"
-    email: "analyst@example.com"
-  - name: "UI/UX Designer"
-    role: "Frontend Command Center Design"
-    email: "designer@example.com"
+  - name: "jenil Sakhiya"
+    role: "Team Lead"
+    email: "25ce104@charusar.edu.in"
+  - name: "Daksh Patel"
+    role: "member"
+    email: "25dce035@charusar.edu.in"
+  - name: "yug kansagra"
+    role: "member"
+    email: "d26dce141@charusar.edu.in"
 
 demo:
   video_url: "https://youtu.be/example-cybersentinel-demo"
-  local_url: "http://localhost:5173"
-  api_docs: "http://localhost:8000/docs"
+  live_url: "https://cybersentinel-mocha.vercel.app/"
+  api_docs: "https://cybersentinel-bqxe.onrender.com/docs"
 
 tech_stack:
   backend:
